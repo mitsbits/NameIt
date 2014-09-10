@@ -1,0 +1,27 @@
+﻿@using System.Activities.Expressions
+@using NameIt.Domain
+@model IList<NameIt.Domain.Taxonomy>
+@{
+    ViewBag.Title = "Take a peek";
+    var roots = Model.Where(x => !x.ParentId.HasValue);
+}
+
+<h2>Pick a game</h2>
+@foreach (var root in roots)
+{
+    <h3>@root.Display</h3>
+    @links(root)
+    
+}
+
+@helper links(Taxonomy root)
+{
+    var children = Model.Where(x => x.ParentId.HasValue && x.ParentId.Value == root.Id);
+    foreach (var taxonomy in children)
+    {
+        <span>@Html.ActionLink(taxonomy.Display, "Root", "NameIt", new { taxonomy = taxonomy.Id }, null)</span>
+    }
+}
+
+
+
