@@ -1,0 +1,26 @@
+﻿@model NameIt.Domain.Game
+
+@{
+
+    var selected = int.Parse(ViewContext.RouteData.Values["part"].ToString());
+    var index = Model.Set.Keys.OrderBy(x => x).ToArray()[selected - 1];
+    var part = Model.Set[index];
+    var image = part.Block.Visual.Url;
+
+    var names = new List<string>(part.AlternateNames) { part.Block.Name };
+}
+
+<h2>Name it</h2>
+
+<img style="margin: auto; width:400px;" src="@image" class="img-rounded" />
+<hr />
+@foreach (var name in names.OrderBy(x => x).ToList())
+{
+    <div>
+        <input type="radio" name="names" value="@name"/><label>@name</label>
+    </div>
+}
+
+
+
+
