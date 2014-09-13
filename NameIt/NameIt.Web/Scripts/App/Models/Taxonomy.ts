@@ -2,8 +2,8 @@
     'use strict';
     export class Taxonomy {
         constructor(
-            public id: number,
-            public display: string,
-            public parentid? : number){}
+            public Id: number,
+            public Display: string,
+            public ParentId? : number){}
     }
 } 

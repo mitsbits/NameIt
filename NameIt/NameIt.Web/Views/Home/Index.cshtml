@@ -5,11 +5,18 @@
 
 
 <div class="row" ng-app="nameIt" ng-controller="nameItCtrlr">
-    <h1>{{5+9}}</h1>
-    <button ng-click="vm.getTaxonomies()">Do It!</button>
-    <div ng-repeat="taxonomy in taxonomies">
-        <label>{{taxonomy.display}}</label>
-    </div>
+
+
+
+    <ul ng-repeat="taxonomy in taxonomies  | filter:{ParentId: null}">
+        <li>
+            <strong>{{taxonomy.Display}}</strong>
+            <ul ng-repeat="inner in taxonomies  | filter:{ParentId: taxonomy.Id}">
+                <li>{{inner.Display}}</li>
+            </ul>
+        </li>
+
+    </ul>
 </div>
 @section scripts
 {
