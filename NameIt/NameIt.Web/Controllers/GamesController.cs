@@ -17,5 +17,6 @@ namespace NameIt.Web.Controllers
             if (game == null) return NotFound();
             return Ok(game);
         }
+
     }
 }

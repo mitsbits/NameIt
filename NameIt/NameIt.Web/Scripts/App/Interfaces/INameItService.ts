@@ -2,6 +2,6 @@
 
 module NameIt {
     export interface INameItService {
-
+        getTaxonomies() : void
     }
 }

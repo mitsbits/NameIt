@@ -1,10 +1,25 @@
 ﻿/// <reference path="_all.ts" />
 module NameIt {
     'use strict';
-    var nameIt = angular.module('nameIt', [])
-        .controller('nameItCtrl', NameItCtrl)
-        .factory('GameResource',
-        ['$resource', ($resource: ng.resource.IResourceService): IGameResource => {
-            return <IGameResource> $resource('/api/games/:id', { id: '@id' });
-        }]);
+
+    class Module {
+        app: ng.IModule;
+
+        constructor(name: string, modules: Array<string>) {
+            this.app = angular.module(name, modules);
+        }
+
+        addController(name: string, controller: Function) {
+            this.app.controller(name, controller);
+        }
+        addService(name: string, service: Function): void {
+            this.app.service(name, service);
+        }
+ 
+    }
+
+    var nameItApp = new Module('nameIt', []);
+    //nameItApp.addService('nameItService', NameIt.NameItService);
+    nameItApp.addController('nameItCtrlr', NameIt.NameItCtrl);
+
 } 

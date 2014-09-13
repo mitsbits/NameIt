@@ -4,6 +4,25 @@
 
 
 
-<div class="row" ng-app>
-<h1>{{5+9}}</h1>    
+<div class="row" ng-app="nameIt" ng-controller="nameItCtrlr">
+    <h1>{{5+9}}</h1>
+    <button ng-click="vm.getTaxonomies()">Do It!</button>
+    <div ng-repeat="taxonomy in taxonomies">
+        <label>{{taxonomy.display}}</label>
+    </div>
 </div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ng")
+    <script src="~/Scripts/App/Models/Block.js"></script>
+    <script src="~/Scripts/App/Models/Game.js"></script>
+    <script src="~/Scripts/App/Models/Part.js"></script>
+    <script src="~/Scripts/App/Models/Taxonomy.js"></script>
+    <script src="~/Scripts/App/Models/Visual.js"></script>
+    <script src="~/Scripts/App/Controllers/NameItCtrl.js"></script>
+
+    <script src="~/Scripts/App/App.js"></script>
+
+}
