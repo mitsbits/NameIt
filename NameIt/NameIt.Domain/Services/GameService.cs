@@ -23,7 +23,7 @@ namespace NameIt.Domain.Services
             var r = new Random();
             foreach (var block in bucket)
             {
-                result.Set.Add(r.Next(), new Part
+                result.SetBucket.Add(r.Next(), new Part
                 {
                     Block = block,
                     AlternateNames = ExtractNamesRandomOrder(bucket).Where(o => o != block.Name).Take(2).ToArray()

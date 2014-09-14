@@ -2,10 +2,9 @@
     'use strict';
     export class Block {
         constructor(
-            public id: number,
-            public name: string,
-            public visual: Visual,
-            public taxonomy: Taxonomy
-            ){}
+            public Id: number,
+            public Name: string,
+            public Visual: Visual
+            ) { }
     }
-} 
+}  

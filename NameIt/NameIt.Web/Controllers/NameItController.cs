@@ -42,7 +42,7 @@ namespace NameIt.Web.Controllers
                 TempData["game"] = game;
             }
             game = TempData["game"] as Game;
-            if (game == null || game.Set.Count < part)
+            if (game == null || game.SetBucket.Count < part)
                return null;
 
             return game;

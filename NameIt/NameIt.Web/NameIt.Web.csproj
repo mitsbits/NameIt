@@ -169,6 +169,8 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\Partials\NameIt\Game.html" />
+    <Content Include="Scripts\App\Partials\NameIt\Index.html" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -493,6 +495,8 @@
     <Content Include="Views\NameIt\Index.cshtml" />
     <Content Include="Views\NameIt\Part.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Navigation.cshtml" />
+    <Content Include="Views\Home\Inner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

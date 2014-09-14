@@ -1,9 +1,18 @@
 ﻿/// <reference path="../_all.ts" />
 module NameIt {
     'use strict';
-    export class Game  {
+    export class Game implements IGame {
+        public SelectedPart: Part;
         constructor(
-            public parts: Array<Part>,
-            public score: number){}
+            public Parts: Array<Part>,
+            public Score: number,
+            public Selected?: number) {
+            if (Selected == null) {
+                this.Selected = -1;
+                this.SelectedPart = null;
+            }
+        }
+
     }
+   
 } 

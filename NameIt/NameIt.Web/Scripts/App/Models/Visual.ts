@@ -2,6 +2,6 @@
     'use strict';
     export class Visual {
         constructor(
-            public url: string) {}
+            public Url: string) {}
     }
 } 

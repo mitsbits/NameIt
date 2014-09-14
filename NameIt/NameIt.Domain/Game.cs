@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace NameIt.Domain
 {
@@ -8,9 +9,17 @@ namespace NameIt.Domain
     {
         public Game()
         {
-            Set = new Dictionary<int, Part>();
+            SetBucket = new Dictionary<int, Part>();
         }
 
-        public IDictionary<int, Part> Set { get; private set; }
+        public IDictionary<int, Part> SetBucket { get; private set; }
+
+        public Part[] Parts
+        {
+            get
+            {
+                return SetBucket.Keys.OrderBy(x => x).ToList().Select(key => SetBucket[key]).ToArray();
+            }
+        }
     }
 }

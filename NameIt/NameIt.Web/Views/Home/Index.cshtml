@@ -4,19 +4,26 @@
 
 
 
-<div class="row" ng-app="nameIt" ng-controller="nameItCtrlr">
+<div class="row" ng-app="nameIt">
 
 
+    <div class="col-md-4" ng-controller="nameItCtrl">
+        <ul ng-repeat="taxonomy in taxonomies  | filter:{ParentId: null}">
+            <li>
+                <strong>{{taxonomy.Display}}</strong>
+                <ul ng-repeat="inner in taxonomies  | filter:{ParentId: taxonomy.Id}">
+                    <li>
+                        <a ng-href="/{{inner.Id}}"><span>{{inner.Display}}</span></a>
 
-    <ul ng-repeat="taxonomy in taxonomies  | filter:{ParentId: null}">
-        <li>
-            <strong>{{taxonomy.Display}}</strong>
-            <ul ng-repeat="inner in taxonomies  | filter:{ParentId: taxonomy.Id}">
-                <li>{{inner.Display}}</li>
-            </ul>
-        </li>
+                    </li>
+                </ul>
+            </li>
 
-    </ul>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <div ng-view></div>
+    </div>
 </div>
 @section scripts
 {

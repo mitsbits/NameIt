@@ -13,6 +13,11 @@ namespace NameIt.Web.Controllers
             return View();
         }
 
+        public ActionResult Inner()
+        {
+            return PartialView();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
