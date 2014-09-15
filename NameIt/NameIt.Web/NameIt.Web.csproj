@@ -518,6 +518,7 @@
     <TypeScriptCompile Include="Scripts\App\Interfaces\IGameResource.ts" />
     <TypeScriptCompile Include="Scripts\App\Interfaces\INameItScope.ts" />
     <TypeScriptCompile Include="Scripts\App\Interfaces\INameItService.ts" />
+    <TypeScriptCompile Include="Scripts\App\Interfaces\IPart.ts" />
     <TypeScriptCompile Include="Scripts\App\Models\Block.ts" />
     <TypeScriptCompile Include="Scripts\App\Models\Game.ts" />
     <TypeScriptCompile Include="Scripts\App\Models\Part.ts" />

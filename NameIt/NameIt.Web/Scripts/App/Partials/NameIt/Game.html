@@ -1,4 +1,8 @@
 ﻿<h1>Your game has {{game.Parts.length}} questions!</h1>
-<h3>No: {{game.Selected + 1}}</h3>
+<h3>No: {{game.Selected + 1}} Points: {{game.SelectedPart.Score}}</h3>
 
-<img style="margin: auto; width:400px;" src="{{game.SelectedPart.Block.Visual.Url}}" class="img-rounded" />
+<img style="margin: auto; width: 400px;" src="{{game.SelectedPart.Block.Visual.Url}}" class="img-rounded" alt="" />
+<div ng-repeat="name in game.SelectedPart.NameBucket">
+    <button>{{name}}</button>
+    <p>sdfasdfasdfasdfas</p>
+</div>

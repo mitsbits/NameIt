@@ -64,7 +64,9 @@
         showPart(indx: number):void {
             this.$scope.game.Selected = indx;
             var gg = this.$scope.game.Parts[indx];
+            gg.PrepareNameOptions();
             this.$scope.game.SelectedPart = gg;
+            
         }
     }
 } 
