@@ -26,20 +26,26 @@ namespace NameIt.Domain.Services
                 result.SetBucket.Add(r.Next(), new Part
                 {
                     Block = block,
-                    AlternateNames = ExtractNamesRandomOrder(bucket).Where(o => o != block.Name).Take(2).ToArray()
+                    AlternateNames = ExtractNamesRandomOrder(bucket, block.Name)
                 });
             }
             return result;
         }
 
-        private static IEnumerable<string> ExtractNamesRandomOrder(IEnumerable<Block> bucket)
+        private static string[] ExtractNamesRandomOrder(IEnumerable<Block> bucket, string currentName,
+            int total = 3)
         {
             var r = new Random();
 
-            return bucket.Select(x => new {x.Name, Order = r.Next() })
-                    .OrderBy(o => o.Order)
-                    .Select(o => o.Name)
-                    .ToArray();
+            var list = bucket.Where(x => x.Name != currentName)
+                .Select(x => new { x.Name, Order = r.Next() }).Take(total - 1)
+                .Select(o => o.Name)
+                .ToList();
+
+            list.Add(currentName);
+
+            list.Sort();
+            return list.ToArray();
         }
     }
 }

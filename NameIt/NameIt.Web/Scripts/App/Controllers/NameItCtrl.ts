@@ -1,4 +1,5 @@
-﻿module NameIt {
+﻿/// <reference path="../_all.ts" />
+module NameIt {
     'use strict';
 
     export class NameItCtrl {
@@ -42,21 +43,23 @@
 
             ) {
             super($scope, $http);
-            var game = <number>this.$routeParams["game"];
-            this.showGame(game);
+            var taxonomy = <number>this.$routeParams["game"];
+            this.showGame(taxonomy);
         }
 
-        showGame(game: number):void {
-            this.$http.get<Game>('api/games/' + game).success(data => {
+        showGame(taxonomy: number):void {
+            this.$http.get<Game>('api/games/' + taxonomy).success(data => {
                 this.$scope.game = data;
-                for (var i = 0; i < this.$scope.game.Parts.length; i++) {
+                var total = this.$scope.game.Parts.length;
+                for (var i = 0; i < total; i++) {
                     var part = this.$scope.game.Parts[i];
                     part.Order = i;
                     part.Completed = false;
                     part.Score = 3;
-                    this.$scope.game.Parts[i] = part;
-                    
+                    part.Total = total;
+                    this.$scope.game.Parts[i] = part;                    
                 }
+                this.$scope.game.Score = 0;
                 this.showPart(0);
             });           
         }
@@ -64,9 +67,28 @@
         showPart(indx: number):void {
             this.$scope.game.Selected = indx;
             var gg = this.$scope.game.Parts[indx];
-            gg.PrepareNameOptions();
-            this.$scope.game.SelectedPart = gg;
-            
+            this.$scope.game.SelectedPart = gg;        
+        }
+
+        vote(option: string):void {
+            var part = this.$scope.game.SelectedPart;
+            var correctValue = part.Block.Name;
+            var iscorrect = option == correctValue;
+            if (iscorrect) {
+                this.handleSuccess(part);
+            } else {
+                this.handleFail(part);
+            }
+        }
+
+        private handleSuccess(part: Part):void {
+            this.$scope.game.Score += part.Score;
+            part.Completed = true;
+            this.$scope.game.Parts[part.Order] = part;
+            this.showPart(part.Order + 1);
+        }
+        private handleFail(part: Part): void {
+            part.AlternateNames.splice(part.Order, 1);
         }
     }
 } 
