@@ -1,0 +1,10 @@
+﻿<ul ng-repeat="taxonomy in taxonomies  | filter:{ParentId: null}">
+    <li>
+        <strong>{{taxonomy.Display}}</strong>
+        <ul ng-repeat="inner in taxonomies  | filter:{ParentId: taxonomy.Id}">
+            <li>
+                <a ng-href="/{{inner.Id}}/"><span>{{inner.Display}}</span></a>
+            </li>
+        </ul>
+    </li>
+</ul>
