@@ -45,10 +45,7 @@ module NameIt {
                 controller: 'gameItCtrl',
                 templateUrl: 'Scripts/App/Partials/NameIt/Game.html'
             });
-            $routeProvider.when('/:game/results', {
-                controller: 'gameItCtrl',
-                templateUrl: '../Scripts/App/Partials/NameIt/GameResults.html'
-            });
+
             $routeProvider.otherwise({
                 redirectTo: '/'
             });

@@ -2,7 +2,7 @@
 module NameIt {
     'use strict';
 
-    export class NameItCtrl {
+    export class NameItCtrl extends BaseCtrl {
 
         public static $inject = [
             '$scope', '$http'
@@ -11,9 +11,8 @@ module NameIt {
 
         constructor(
             public $scope: INameItScope,
-            public  $http: ng.IHttpService
- 
-            ) {
+            public  $http: ng.IHttpService) {
+            super();
             $scope.vm = this;
             $scope.taxonomies = new Array<Taxonomy>();
             this.getTaxonomies();
@@ -21,7 +20,7 @@ module NameIt {
 
         getTaxonomies() {
             if (this.$scope.taxonomies != undefined && this.$scope.taxonomies.length > 0) return;
-            this.$http.get<Array<Taxonomy>>('api/taxonomies').success(data => {
+            this.$http.get<Array<Taxonomy>>(this.rel2Abs('api/taxonomies')).success(data => {
                 this.$scope.taxonomies = data;
             });
  

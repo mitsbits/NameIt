@@ -5,7 +5,8 @@ module NameIt {
         vm: NameItCtrl;
         taxonomies : Array<Taxonomy>;
     }
-    export interface IGameItScope extends  INameItScope {
+    export interface IGameItScope extends ng.IScope {
+        vm: GameItCtrl;
         game:IGame
     }
 }
