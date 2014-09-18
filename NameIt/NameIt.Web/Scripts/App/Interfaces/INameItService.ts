@@ -2,6 +2,7 @@
 
 module NameIt {
     export interface INameItService {
-        getTaxonomies() : void
+        getTaxonomies(): ng.IPromise<Array<Taxonomy>>;
+        getGame(taxonomy: number): ng.IPromise<Game>;
     }
 }

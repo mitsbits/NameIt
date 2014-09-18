@@ -25,6 +25,7 @@ module NameIt {
     }
 
     var nameItApp = new Module('nameIt', ['ngRoute']);
+    nameItApp.addService('nameItService', NameIt.NameItService);
     nameItApp.addController('nameItCtrl', NameIt.NameItCtrl);
     nameItApp.addController('gameItCtrl', NameIt.GameItCtrl);
     //nameItApp.addDirective('taxonomyNav',
@@ -52,6 +53,6 @@ module NameIt {
             $locationProvider.html5Mode(true);
         }]);
 
-    //nameItApp.addService('nameItService', NameIt.NameItService);
+    
 
 } 

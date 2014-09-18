@@ -1,18 +1,16 @@
-﻿<section ng-if="game.Selected < game.Parts.length">
+﻿<section ng-if="vm.game.Selected < vm.game.Parts.length">
     <h1>
-        Your game has {{game.Parts.length}} questions! <br />
-        <small>max {{game.Parts.length * 3}} points - current score: {{game.Score}}</small>
+        Your game has {{vm.game.Parts.length}} questions! <br />
+        <small>max {{vm.game.Parts.length * 3}} points - current score: {{vm.game.Score}}</small>
     </h1>
-    <h3>No: {{game.Selected + 1}} Points: {{game.SelectedPart.Score}}</h3>
-
-    <img style="margin: auto; width: 400px;" src="{{game.SelectedPart.Block.Visual.Url}}" class="img-rounded" alt="" />
-
-    <div ng-repeat="name in game.SelectedPart.AlternateNames" class="row">
+    <h3>No: {{vm.game.Selected + 1}} Points: {{vm.game.SelectedPart.Score}}</h3>
+    <img style="margin: auto; width: 400px;" src="{{vm.game.SelectedPart.Block.Visual.Url}}" class="img-rounded" alt="" />
+    <div ng-repeat="name in vm.game.SelectedPart.AlternateNames" class="row">
         <button class="button col-md-4" ng-click="vm.vote(name);">{{name}}</button>
     </div>
 </section>
-<section ng-if="game.Selected == game.Parts.length">
-    <h1>Hoooorey! Your score is {{game.Score}} of {{game.Parts.length * 3}}</h1>
+<section ng-if="vm.game.Selected == vm.game.Parts.length">
+    <h1>Hoooorey! Your score is {{vm.game.Score}} of {{vm.game.Parts.length * 3}}</h1>
     <hr />
     <ul ng-repeat="part in game.Parts">
         <li>{{part.Block.Name}} - {{part.Score}}</li>

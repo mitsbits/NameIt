@@ -3,17 +3,19 @@ module NameIt {
     'use strict';
 
     export class GameItCtrl extends BaseCtrl {
-        public static $inject = [
-            '$scope', '$http', '$routeParams', '$location'
-        ];
+
 
         private nextVoteAdvances: boolean = false;
 
+        public game : Game;
+        public static $inject = [
+            '$scope', '$routeParams', '$location', 'nameItService'
+        ];
         constructor(
             public $scope: IGameItScope,
-            public $http: ng.IHttpService,
             public $routeParams: ng.route.IRouteParamsService,
-            private $location: ng.ILocationService) {
+            private $location: ng.ILocationService,
+            private nameItService: INameItService ) {
             super();
             $scope.vm = this;
             var taxonomy = <number>this.$routeParams["game"];
@@ -21,27 +23,21 @@ module NameIt {
         }
 
         showGame(taxonomy: number): void {
-            this.$http.get<Game>(this.rel2Abs('api/games/') + taxonomy).success(data => {
-                this.$scope.game = this.prepareGame(data);
+            this.nameItService.getGame(taxonomy).then(data => {
+                this.game = data;
                 this.showPart(0);
             });
         }
 
         showPart(indx: number): void {
-            //if (indx == this.$scope.game.Parts.length) {
-                
-            //    this.$location.path( indx.toString() + "/results");
-
-            //} else {
-                this.$scope.game.Selected = indx;
-                var gg = this.$scope.game.Parts[indx];
-                this.$scope.game.SelectedPart = gg;
+                this.game.Selected = indx;
+                var gg = this.game.Parts[indx];
+                this.game.SelectedPart = gg;
                 this.nextVoteAdvances = false;
-            //}
         }
 
         vote(option: string): void {
-            var part = this.$scope.game.SelectedPart;
+            var part = this.game.SelectedPart;
             if (this.nextVoteAdvances) {
                 this.showPart(part.Order + 1);
             }
@@ -55,9 +51,9 @@ module NameIt {
 
 
         private handleSuccess(part: Part): void {
-            this.$scope.game.Score += part.Score;
+            this.game.Score += part.Score;
             part.Completed = true;
-            this.$scope.game.Parts[part.Order] = part;
+            this.game.Parts[part.Order] = part;
             if (part.Score > 0) {
                 //alert("You have won " + part.Score + " points!\nMoving on...");
             }
@@ -76,18 +72,6 @@ module NameIt {
             var indx = part.AlternateNames.indexOf(option);
             part.AlternateNames.splice(indx, 1);
         }
-        private prepareGame(data: Game): Game {
-            var total = data.Parts.length;
-            for (var i = 0; i < total; i++) {
-                var part = data.Parts[i];
-                part.Order = i;
-                part.Completed = false;
-                part.Score = 3;
-                part.Total = total;
-                data.Parts[i] = part;
-            }
-            data.Score = 0;
-            return data;
-        }
+
     }
 } 
