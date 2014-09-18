@@ -39,7 +39,6 @@ module NameIt {
         ($routeProvider: ng.route.IRouteProvider,
             $locationProvider: ng.ILocationProvider) => {
             $routeProvider.when('/', {
-                controller: 'nameItCtrl',
                 templateUrl: 'Scripts/App/Partials/NameIt/Index.html'
             });
             $routeProvider.when('/:game', {

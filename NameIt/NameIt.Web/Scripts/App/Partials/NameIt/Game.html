@@ -4,9 +4,11 @@
         <small>max {{vm.game.Parts.length * 3}} points - current score: {{vm.game.Score}}</small>
     </h1>
     <h3>No: {{vm.game.Selected + 1}} Points: {{vm.game.SelectedPart.Score}}</h3>
-    <img style="margin: auto; width: 400px;" src="{{vm.game.SelectedPart.Block.Visual.Url}}" class="img-rounded" alt="" />
-    <div ng-repeat="name in vm.game.SelectedPart.AlternateNames" class="row">
-        <button class="button col-md-4" ng-click="vm.vote(name);">{{name}}</button>
+    <img src="{{vm.game.SelectedPart.Block.Visual.Url}}" class="img-rounded img-responsive center-block game" alt="" />
+    <div ng-repeat="name in vm.game.SelectedPart.AlternateNames" class="row" ng-class="{ green : vm.game.SelectedPart.AlternateNames.length == 1}">
+        <button class=" btn btn-default btn-lg btn-block" ng-click="vm.vote(name); ">
+            {{name}}
+        </button>
     </div>
 </section>
 <section ng-if="vm.game.Selected == vm.game.Parts.length">
