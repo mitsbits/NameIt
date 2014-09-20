@@ -1,7 +1,7 @@
-﻿<ul ng-repeat="taxonomy in vm.taxonomies  | filter:{ParentId: null}">
+﻿<ul ng-repeat="taxonomy in vm.taxonomies  | filter:{ParentId: null}" class="nav nav-pills nav-stacked">
     <li>
-        <strong>{{taxonomy.Display}}</strong>
-        <ul ng-repeat="inner in vm.taxonomies  | filter:{ParentId: taxonomy.Id}">
+        <a href="#"><strong>{{taxonomy.Display}}</strong></a> 
+        <ul ng-repeat="inner in vm.taxonomies  | filter:{ParentId: taxonomy.Id}" class="nav nav-pills nav-stacked">
             <li>
                 <a ng-href="/{{inner.Id}}/"><span>{{inner.Display}}</span></a>
             </li>

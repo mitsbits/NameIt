@@ -4,12 +4,14 @@
 
 
 
-<div class="row" ng-app="nameIt">
-    <div class="col-md-4" ng-controller="nameItCtrl">
-        <div ng-include src="'Scripts/App/Partials/Shared/TaxonomyNavigation.html'"></div>
-    </div>
-    <div class="col-md-8">
-        <div ng-view></div>
+<div class="container body-content" ng-app="nameIt">
+    <div class="row">
+        <div class="col-md-4" ng-controller="nameItCtrl">
+            <section ng-include src="'Scripts/App/Partials/Shared/TaxonomyNavigation.html'"></section>
+        </div>
+        <div class="col-md-8">
+            <div ng-view></div>
+        </div>
     </div>
 </div>
 @section scripts
