@@ -171,6 +171,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\Partials\NameIt\Game.html" />
     <Content Include="Scripts\App\Partials\NameIt\Index.html" />
+    <Content Include="Scripts\App\Partials\Shared\PartThumbnail.html" />
     <Content Include="Scripts\App\Partials\Shared\TaxonomyNavigation.html" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />

@@ -16,5 +16,15 @@
     white-space: normal;
 }
 
-img.game{ max-height: 350px;}
-div.green button { background-color: green !important;color: #fff !important;}
+img.game {
+    max-height: 350px;
+}
+
+img.game-thumb {
+    max-height: 120px;
+}
+
+div.green button {
+    background-color: green !important;
+    color: #fff !important;
+}

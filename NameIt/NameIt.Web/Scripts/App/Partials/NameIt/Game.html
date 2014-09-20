@@ -17,12 +17,12 @@
         </div>
     </div>
 </section>
-<section ng-if="vm.game.Selected == vm.game.Parts.length">
+<div ng-if="vm.game.Selected == vm.game.Parts.length" class="row">
     <div class="page-header">
-    <h1>Hoooorey! Your score is {{vm.game.Score}} of {{vm.game.Parts.length * 3}}</h1>
+        <h1>Hoooorey! Your score is {{vm.game.Score}} of {{vm.game.Parts.length * 3}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="part in vm.game.Parts" ng-include src="'Scripts/App/Partials/Shared/PartThumbnail.html'">  
         </div>
-       
-        <ul ng-repeat="part in vm.game.Parts">
-            <li>{{part.Block.Name}} - {{part.Score}}</li>
-        </ul>
-</section>
+    </div>
+</div>
